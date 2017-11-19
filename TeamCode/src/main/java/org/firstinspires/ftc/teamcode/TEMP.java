@@ -111,5 +111,5 @@ public class TEMP extends LinearOpMode {
             telemetry.update();
 
             idle();
-        } telemetry.addData("Wyatt is my son is my creator", "");
+        } telemetry.addData("Wyatt is my creator", "");
     }}
