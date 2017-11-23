@@ -110,7 +110,7 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
 
         if (colory.red() <= 20) {
             sleep(10000);
-            encoderDrive(TURN_SPEED, 48, -48, 5.0);  // S1: Forward 47 Inches with 5 Sec timeout
+            encoderDrive(TURN_SPEED, -6, 6, 5.0);
             Sensorarm.setPower(-2.5);
             Sensorarm.setPower(-2.5);
 
@@ -118,8 +118,7 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
         else
         {
             sleep(10000);
-            encoderDrive(TURN_SPEED, -20, 20, 4.0);
-            encoderDrive(DRIVE_SPEED, -2, -2, 4.0);
+            encoderDrive(DRIVE_SPEED, 6, -6, 5.0);
             Sensorarm.setPower(-2.5);
             Sensorarm.setPower(-2.5);
 
