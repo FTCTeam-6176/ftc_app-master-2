@@ -58,7 +58,7 @@ public class Backleftblue_Linear extends LinearOpMode {
         right_Drive = hardwareMap.get(DcMotor.class, "right_Drive");
         arm_Drive = hardwareMap.get(DcMotor.class, "arm_Drive");
         Sensorarm = hardwareMap.get(CRServo.class, "sensor_arm");
-        colory = hardwareMap.get(ColorSensor.class,"colorsensor");
+        //colory = hardwareMap.get(ColorSensor.class,"colorsensor");
         Pin = hardwareMap.get(CRServo.class, "Pin");
         /*
          * Initialize the drive system variables.
