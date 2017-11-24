@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 /**
  * This file illustrates the concept of driving a path based on encoder counts.
@@ -35,7 +36,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @Autonomous(name="Backrightblue_Linear", group="Pushbot")
-//@Disabled
+@Disabled
 public class Backrightblue_Linear extends LinearOpMode {
 
 
@@ -88,7 +89,7 @@ public class Backrightblue_Linear extends LinearOpMode {
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
 
-        encoderDrive(0.5,   37, 37, 12.0);
+        encoderDrive(0.5,   37, 37, 9.0);
         encoderDrive(0.5, -12, 12, 4.0);
         encoderDrive(0.5, 22, 22, 7.0);
         arm(1.0, 3000);
