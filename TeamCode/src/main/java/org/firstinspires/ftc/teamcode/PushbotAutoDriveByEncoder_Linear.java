@@ -113,6 +113,7 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
             encoderDrive(TURN_SPEED, -6, 6, 5.0);
             Sensorarm.setPower(-2.5);
             Sensorarm.setPower(-2.5);
+            colory.enableLed(false);
 
         }
         else
@@ -121,7 +122,7 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
             encoderDrive(DRIVE_SPEED, 6, -6, 5.0);
             Sensorarm.setPower(-2.5);
             Sensorarm.setPower(-2.5);
-
+            colory.enableLed(false);
         }
         /*
         encoderDrive(TURN_SPEED, 10,10, 4.0);
