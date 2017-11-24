@@ -102,7 +102,6 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
 
             Sensorarm.setPower(1);
             Sensorarm.setPower(1);
-            Sensorarm.setPower(1);
         encoderDrive(DRIVE_SPEED, 0, 0, 5.0);
 
         //sleep(1000); this should work as a wait block
