@@ -55,7 +55,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  */
 
 @TeleOp(name="TeleOpMode Use during the tournament", group="Linear Opmode")
-@Disabled
+//@Disabled
 public class TeleOpMode_LinearM extends LinearOpMode {
 
     // Declare OpMode members.

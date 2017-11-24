@@ -35,9 +35,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Backrightblue_Linear", group="Pushbot")
+@Autonomous(name="Backrightred_Linear", group="Pushbot")
 @Disabled
-public class Backrightblue_Linear extends LinearOpMode {
+public class Backrightred_Linear extends LinearOpMode {
 
 
     private ElapsedTime     runtime = new ElapsedTime();
@@ -90,7 +90,7 @@ public class Backrightblue_Linear extends LinearOpMode {
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
 
         encoderDrive(0.5,   37, 37, 9.0);
-        encoderDrive(0.5, -12, 12, 4.0);
+        encoderDrive(0.5, 12, -12, 4.0);
         encoderDrive(0.5, 22, 22, 7.0);
         arm(1.0, 3000);
         encoderDrive(0.5, -1.5, -1.5, 3.0);

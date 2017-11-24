@@ -42,7 +42,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Pushbot: Auto Drive By Encoder20", group="Pushbot")
+@Autonomous(name="Pushbot:color sensor jewel knock off", group="Pushbot")
 //@Disabled
 public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
 
