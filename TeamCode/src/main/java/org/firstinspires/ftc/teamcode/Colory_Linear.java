@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 /**
  * This file illustrates the concept of driving a path based on encoder counts.
@@ -35,9 +34,9 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Backleftred_Linear", group="Pushbot")
+@Autonomous(name="Backleftblue_Linear", group="Pushbot")
 //@Disabled
-public class Backleftred_Linear extends LinearOpMode {
+public class Colory_Linear extends LinearOpMode {
 
 
     private ElapsedTime     runtime = new ElapsedTime();
@@ -91,12 +90,14 @@ public class Backleftred_Linear extends LinearOpMode {
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
 
-        encoderDrive(0.5,   -2, -2, 4.0);
-        encoderDrive(0.5, 12, -12, 5.0);
-        encoderDrive(0.5, -37, -37, 9.0);
-        arm(1.0, 3000);
-        encoderDrive(0.5, 1.5, 1.5, 3.0);
-
+        encoderDrive(0.5,   2, 2, 4.0);
+        if (colory.red() < 20){
+            //Insert code here.
+        }
+        else  {
+            //Insert other code here.
+        }
+        //Continue program here.
 
 
         telemetry.addData("Path", "Complete");

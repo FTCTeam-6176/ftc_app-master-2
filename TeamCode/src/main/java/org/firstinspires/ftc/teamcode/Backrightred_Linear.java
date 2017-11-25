@@ -36,7 +36,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
  */
 
 @Autonomous(name="Backrightred_Linear", group="Pushbot")
-@Disabled
+//@Disabled
 public class Backrightred_Linear extends LinearOpMode {
 
 
@@ -58,8 +58,8 @@ public class Backrightred_Linear extends LinearOpMode {
         left_Drive  = hardwareMap.get(DcMotor.class, "left_Drive");
         right_Drive = hardwareMap.get(DcMotor.class, "right_Drive");
         arm_Drive = hardwareMap.get(DcMotor.class, "arm_Drive");
-        Sensorarm = hardwareMap.get(CRServo.class, "sensor_arm");
-        //colory = hardwareMap.get(ColorSensor.class,"colorsensor");
+        Sensorarm = hardwareMap.get(CRServo.class, "Sensor_arm");
+        colory = hardwareMap.get(ColorSensor.class,"colory");
         Pin = hardwareMap.get(CRServo.class, "Pin");
         /*
          * Initialize the drive system variables.
@@ -73,7 +73,9 @@ public class Backrightred_Linear extends LinearOpMode {
 
         left_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+        left_Drive.setDirection(DcMotor.Direction.REVERSE);
+        right_Drive.setDirection(DcMotor.Direction.FORWARD);
+        arm_Drive.setDirection(DcMotor.Direction.FORWARD);
         left_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         right_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
