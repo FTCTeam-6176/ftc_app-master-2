@@ -83,13 +83,15 @@ public class SensorREVColorDistance extends LinearOpMode {
     ColorSensor sensorColor;
     DistanceSensor sensorDistance;
 
+    private CRServo SensorArm = null;
+
     HardwarePushbot robot = new HardwarePushbot();
     private ElapsedTime runtime = new ElapsedTime();
 
     static final double     COUNTS_PER_MOTOR_REV    = 1440; //eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 2.0; //This is < 1.0 if geared UP
-    static  final double    WHEEL_DIAMETER_INCHES   = 4.0; //For figuring circumference
-    static  final double    COUNTS_PER_INCH         =(COUNTS_PER_MOTOR_REV*DRIVE_GEAR_REDUCTION)/(WHEEL_DIAMETER_INCHES*3.1415);
+    static final double    WHEEL_DIAMETER_INCHES   = 4.0; //For figuring circumference
+    static final double    COUNTS_PER_INCH         =(COUNTS_PER_MOTOR_REV*DRIVE_GEAR_REDUCTION)/(WHEEL_DIAMETER_INCHES*3.1415);
     static final double     DRIVE_SPEED             = 0.6;
     static final double     TURN_SPEED              = 0.5;
 
@@ -116,6 +118,10 @@ public class SensorREVColorDistance extends LinearOpMode {
         // color of the Robot Controller app to match the hue detected by the RGB sensor.
         int relativeLayoutId = hardwareMap.appContext.getResources().getIdentifier("RelativeLayout", "id", hardwareMap.appContext.getPackageName());
         final View relativeLayout = ((Activity) hardwareMap.appContext).findViewById(relativeLayoutId);
+
+        // define drives and servos
+        SensorArm = hardwareMap.get(CRServo.class, "Sensor_Arm");
+        
 
         // wait for the start button to be pressed.
         waitForStart();
@@ -158,6 +164,13 @@ public class SensorREVColorDistance extends LinearOpMode {
                 relativeLayout.setBackgroundColor(Color.WHITE);
             }
         });
+
+
+        //Extend jewel arm and turn on LED
+        sensorColor.enableLed(true);
+        SensorArm.setPower(1);
+        SensorArm.setPower(1);
+
 
         //Turn based on color reading
         if (sensorColor.red() > sensorColor.blue()) {
@@ -234,7 +247,6 @@ public class SensorREVColorDistance extends LinearOpMode {
                                                             robot.leftDrive.getCurrentPosition(),
                                                             robot.rightDrive.getCurrentPosition());
                     telemetry.update();
-
                 }
 
                 //Display it for the driver;
