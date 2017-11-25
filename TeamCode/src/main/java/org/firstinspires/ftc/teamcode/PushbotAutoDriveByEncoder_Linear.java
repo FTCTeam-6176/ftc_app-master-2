@@ -107,9 +107,9 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
         //sleep(1000); this should work as a wait block
 
 
-        if (colory.red() <= 20) {
+        if (colory.red() > colory.blue()) {
             sleep(10000);
-            encoderDrive(TURN_SPEED, -6, 6, 5.0);
+            encoderDrive(TURN_SPEED, -4, 4, 5.0);
             Sensorarm.setPower(-2.5);
             Sensorarm.setPower(-2.5);
             colory.enableLed(false);
@@ -118,7 +118,7 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
         else
         {
             sleep(10000);
-            encoderDrive(DRIVE_SPEED, 6, -6, 5.0);
+            encoderDrive(DRIVE_SPEED, 4, -4, 5.0);
             Sensorarm.setPower(-2.5);
             Sensorarm.setPower(-2.5);
             colory.enableLed(false);
@@ -207,5 +207,6 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
 
 
     }
+
 
 
