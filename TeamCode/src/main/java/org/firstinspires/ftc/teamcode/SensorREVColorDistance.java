@@ -38,7 +38,13 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.vuforia.TrackableResult;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import java.util.Locale;
@@ -75,6 +81,16 @@ public class SensorREVColorDistance extends LinearOpMode {
      */
     ColorSensor sensorColor;
     DistanceSensor sensorDistance;
+
+    HardwarePushbot robot = new HardwarePushbot();
+    private ElapsedTime runtime = new ElapsedTime();
+
+    static final double     COUNTS_PER_MOTOR_REV    = 1440; //eg: TETRIX Motor Encoder
+    static final double     DRIVE_GEAR_REDUCTION    = 2.0; //This is < 1.0 if geared UP
+    static  final double    WHEEL_DIAMETER_INCHES   = 4.0; //For figuring circumference
+    static  final double    COUNTS_PER_INCH         =(COUNTS_PER_MOTOR_REV*DRIVE_GEAR_REDUCTION)/(WHEEL_DIAMETER_INCHES*3.1415);
+    static final double     DRIVE_SPEED             = 0.6;
+    static final double     TURN_SPEED              = 0.5;
 
     @Override
     public void runOpMode() {
@@ -141,5 +157,23 @@ public class SensorREVColorDistance extends LinearOpMode {
                 relativeLayout.setBackgroundColor(Color.WHITE);
             }
         });
+
+        //Turn based on color reading
+        if (sensorColor.red() > sensorColor.blue()) {
+            sleep(1000);
+        }
+
+        /*
+        *Initialize the drive system variables.
+        * The init() method of the hardware class does all work here
+         */
+        robot.init(hardwareMap);
+
+        // Send telemetry message to signify robot waiting;
+        telemetry.addData("Status", "Resetting Encoders");
+        telemetry.update();
+
+        robot.leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
     }
 }
