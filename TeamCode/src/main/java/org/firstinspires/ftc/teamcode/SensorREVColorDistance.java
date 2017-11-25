@@ -59,7 +59,7 @@ import java.util.Locale;
  * Use Android Studio to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list.
  */
-@Autonomous(name = "Sensor: REVColorDistance", group = "Sensor")
+@Autonomous(name = "Sensor: Sensor Test", group = "Sensor")
 @Disabled                            // Comment this out to add to the opmode list
 public class SensorREVColorDistance extends LinearOpMode {
 
@@ -68,17 +68,16 @@ public class SensorREVColorDistance extends LinearOpMode {
      * It has a light/distance (range) sensor.  It also has an RGB color sensor.
      * The light/distance sensor saturates at around 2" (5cm).  This means that targets that are 2"
      * or closer will display the same value for distance/light detected.
-     *
+     * <p>
      * Although you configure a single REV Robotics Color-Distance sensor in your configuration file,
      * you can treat the sensor as two separate sensors that share the same name in your op mode.
-     *
+     * <p>
      * In this example, we represent the detected color by a hue, saturation, and value color
      * model (see https://en.wikipedia.org/wiki/HSL_and_HSV).  We change the background
      * color of the screen to match the detected color.
-     *
+     * <p>
      * In this example, we  also use the distance sensor to display the distance
      * to the target object.  Note that the distance sensor saturates at around 2" (5 cm).
-     *
      */
     ColorSensor sensorColor;
     DistanceSensor sensorDistance;
@@ -88,12 +87,12 @@ public class SensorREVColorDistance extends LinearOpMode {
     HardwarePushbot robot = new HardwarePushbot();
     private ElapsedTime runtime = new ElapsedTime();
 
-    static final double     COUNTS_PER_MOTOR_REV    = 1440; //eg: TETRIX Motor Encoder
-    static final double     DRIVE_GEAR_REDUCTION    = 2.0; //This is < 1.0 if geared UP
-    static final double    WHEEL_DIAMETER_INCHES   = 4.0; //For figuring circumference
-    static final double    COUNTS_PER_INCH         =(COUNTS_PER_MOTOR_REV*DRIVE_GEAR_REDUCTION)/(WHEEL_DIAMETER_INCHES*3.1415);
-    static final double     DRIVE_SPEED             = 0.6;
-    static final double     TURN_SPEED              = 0.5;
+    static final double COUNTS_PER_MOTOR_REV = 1440; //eg: TETRIX Motor Encoder
+    static final double DRIVE_GEAR_REDUCTION = 2.0; //This is < 1.0 if geared UP
+    static final double WHEEL_DIAMETER_INCHES = 4.0; //For figuring circumference
+    static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.1415);
+    static final double DRIVE_SPEED = 0.6;
+    static final double TURN_SPEED = 0.5;
 
     @Override
     public void runOpMode() {
@@ -121,7 +120,7 @@ public class SensorREVColorDistance extends LinearOpMode {
 
         // define drives and servos
         SensorArm = hardwareMap.get(CRServo.class, "Sensor_Arm");
-        
+
 
         // wait for the start button to be pressed.
         waitForStart();
@@ -188,7 +187,7 @@ public class SensorREVColorDistance extends LinearOpMode {
         telemetry.update();
 
         robot.leftDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER):
+        robot.rightDrive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         robot.leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         robot.rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -207,62 +206,60 @@ public class SensorREVColorDistance extends LinearOpMode {
          * 2) Move runs out of time
          * 3) Driver stops the opmode running
          */
-        public void encoderDrive(double speed,
-                                 double leftInches, double rightInches,
-                                 double timeouts) {
-            int newLeftTarget;
-            int newRightTarget;
-
-            //Ensure that the opmode is still active
-            if (opModeIsActive()) {
-
-                // Determine new target position and pass to motor controller
-                newLeftTarget = robot.leftDrive.getCurrentPosition() + (int)(leftInches * COUNTS_PER_INCH);
-                newRightTarget = robot.rightDrive.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
-                robot.leftDrive.setTargetPosition(newLeftTarget);
-                robot.rightDrive.setTargetPosition(newRightTarget);
-
-                //Turn  on RUN_TO_POSITION
-                robot.leftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.rightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-                //reset the timeout time and start motion
-                runtime.reset();
-                robot.leftDrive.setPower(Math.abs(speed));
-                robot.rightDrive.setPower(Math.abs(speed));
-
-                //keep looping while we are still active and there is time left and both motors are running.
-                //Note: We use (isBusy)() && isBusy ()) in the loop test, which means that when EITHER motor his
-                //its target position, the motion will stop. This is "safer" in the event that the robot will
-                //always end the motion as soon as possible.
-                //However, if you require that BOTH motors have finished their moves before the robot continues
-                //onto the next step, use (isBusy() || isBusy() in the loop test.
-                while (opModeIsActive() &&
-                        (runtime.seconds() < timeoutS) &&
-                        (robot.leftDrive.isBusy() && robot.rightDrive.isBusy())) {
-
-                    //Display it for the driver
-                    telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
-                    telemetry.addData("Path2", "Running at %7d :%7d"),
-                                                            robot.leftDrive.getCurrentPosition(),
-                                                            robot.rightDrive.getCurrentPosition());
-                    telemetry.update();
-                }
-
-                //Display it for the driver;
-                robot.leftDrive.setPower(0);
-                robot.rightDrive.setPower(0);
-
-                //Turn off RUN_TO_POSITION
-                robot.leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-                robot.rightDrive.setMode((DcMotor.RunMode.RUN_USING_ENCODER);
-
-                // sleep (250; //optional pause after each move
-
-            }
     }
-        // Wait for the game to start (driver presses PLAY)
-        waitForStart();
 
+    public void encoderDrive(double speed,
+                             double leftInches, double rightInches,
+                             double timeoutS) {
+        int newLeftTarget;
+        int newRightTarget;
+
+        //Ensure that the opmode is still active
+        if (opModeIsActive()) {
+
+            // Determine new target position and pass to motor controller
+            newLeftTarget = robot.leftDrive.getCurrentPosition() + (int) (leftInches * COUNTS_PER_INCH);
+            newRightTarget = robot.rightDrive.getCurrentPosition() + (int) (rightInches * COUNTS_PER_INCH);
+            robot.leftDrive.setTargetPosition(newLeftTarget);
+            robot.rightDrive.setTargetPosition(newRightTarget);
+
+            //Turn  on RUN_TO_POSITION
+            robot.leftDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.rightDrive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            //reset the timeout time and start motion
+            runtime.reset();
+            robot.leftDrive.setPower(Math.abs(speed));
+            robot.rightDrive.setPower(Math.abs(speed));
+
+            //keep looping while we are still active and there is time left and both motors are running.
+            //Note: We use (isBusy)() && isBusy ()) in the loop test, which means that when EITHER motor his
+            //its target position, the motion will stop. This is "safer" in the event that the robot will
+            //always end the motion as soon as possible.
+            //However, if you require that BOTH motors have finished their moves before the robot continues
+            //onto the next step, use (isBusy() || isBusy() in the loop test.
+            while (opModeIsActive() &&
+                    (runtime.seconds() < timeoutS) &&
+                    (robot.leftDrive.isBusy() && robot.rightDrive.isBusy())) {
+
+                //Display it for the driver
+                telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
+                telemetry.addData("Path2", "Running at %7d :%7d",
+                        robot.leftDrive.getCurrentPosition(),
+                        robot.rightDrive.getCurrentPosition());
+                telemetry.update();
+            }
+
+            //Display it for the driver;
+            robot.leftDrive.setPower(0);
+            robot.rightDrive.setPower(0);
+
+            //Turn off RUN_TO_POSITION
+            robot.leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            robot.rightDrive.setMode((DcMotor.RunMode.RUN_USING_ENCODER));
+
+            // sleep (250; //optional pause after each move
+
+        }
     }
 }
