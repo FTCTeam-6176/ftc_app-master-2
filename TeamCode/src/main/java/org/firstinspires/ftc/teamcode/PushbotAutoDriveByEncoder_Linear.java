@@ -42,7 +42,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Pushbot:color sensor jewel knock off", group="Pushbot")
+@Autonomous(name="Pushbot:color sensor jewel knock off2", group="Pushbot")
 //@Disabled
 public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
 
@@ -109,19 +109,22 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
 
         if (colory.red() > colory.blue()) {
             sleep(10000);
-            encoderDrive(TURN_SPEED, -4, 4, 5.0);
+            encoderDrive(TURN_SPEED, 4, -4, 5.0);
             Sensorarm.setPower(-2.5);
             Sensorarm.setPower(-2.5);
             colory.enableLed(false);
 
+
         }
         else
         {
-            sleep(10000);
+            /*sleep(10000);
             encoderDrive(DRIVE_SPEED, 4, -4, 5.0);
             Sensorarm.setPower(-2.5);
             Sensorarm.setPower(-2.5);
-            colory.enableLed(false);
+            colory.enableLed(false);*/
+
+            encoderDrive(TURN_SPEED, -4, -4, 5.0);
         }
         /*
         encoderDrive(TURN_SPEED, 10,10, 4.0);
