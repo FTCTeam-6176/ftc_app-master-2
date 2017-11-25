@@ -36,7 +36,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
  */
 
 @Autonomous(name="Backleftred_Linear", group="Pushbot")
-@Disabled
+//@Disabled
 public class Backleftred_Linear extends LinearOpMode {
 
 
@@ -58,8 +58,8 @@ public class Backleftred_Linear extends LinearOpMode {
         left_Drive  = hardwareMap.get(DcMotor.class, "left_Drive");
         right_Drive = hardwareMap.get(DcMotor.class, "right_Drive");
         arm_Drive = hardwareMap.get(DcMotor.class, "arm_Drive");
-        Sensorarm = hardwareMap.get(CRServo.class, "sensor_arm");
-        colory = hardwareMap.get(ColorSensor.class,"colorsensor");
+        Sensorarm = hardwareMap.get(CRServo.class, "Sensor_arm");
+        colory = hardwareMap.get(ColorSensor.class,"colory");
         Pin = hardwareMap.get(CRServo.class, "Pin");
         /*
          * Initialize the drive system variables.
@@ -73,7 +73,9 @@ public class Backleftred_Linear extends LinearOpMode {
 
         left_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         right_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
+        left_Drive.setDirection(DcMotor.Direction.REVERSE);
+        right_Drive.setDirection(DcMotor.Direction.FORWARD);
+        arm_Drive.setDirection(DcMotor.Direction.FORWARD);
         left_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         right_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -89,11 +91,11 @@ public class Backleftred_Linear extends LinearOpMode {
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
 
-        encoderDrive(0.5,   2, 2, 4.0);
+        encoderDrive(0.5,   -2, -2, 4.0);
         encoderDrive(0.5, 12, -12, 5.0);
-        encoderDrive(0.5, 37, 37, 9.0);
+        encoderDrive(0.5, -37, -37, 9.0);
         arm(1.0, 3000);
-        encoderDrive(0.5, -1.5, -1.5, 3.0);
+        encoderDrive(0.5, 1.5, 1.5, 3.0);
 
 
 
