@@ -32,22 +32,18 @@ package org.firstinspires.ftc.teamcode;
 import android.graphics.Color;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.util.ElapsedTime;
-import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
-import com.qualcomm.robotcore.util.Range;
-
-// **Added imports
 import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
-import java.lang.reflect.Field;
 import java.util.Locale;
+
+// **Added imports
 
 /**
  * This file contains an minimal example of a Linear "OpMode". An OpMode is a 'program' that runs in either
@@ -62,9 +58,9 @@ import java.util.Locale;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Sample Color Sensor", group="Test OpMode")
-@Disabled  //Comment this out to add to the opmode list
-public class CoachMark_BasicOpMode_Linear extends LinearOpMode {
+@Autonomous(name="Color Sensor Test", group="No Encoder")
+//@Disabled  //Comment this out to add to the opmode list
+public class CoachMark_BasicOpMode_Linear_NoEncoders extends LinearOpMode {
 
     // Use Pushbot's Hardware
     Hardwaremap robot = new Hardwaremap();
@@ -78,15 +74,6 @@ public class CoachMark_BasicOpMode_Linear extends LinearOpMode {
     private ColorSensor colory;
     private DistanceSensor sensorDistance;
     private CRServo Sensor_arm = null;
-
-    // Encoder settings
-    // static final double     COUNTS_PER_MOTOR_REV    = 1440; // e.g. TETRIX Motor Encoder
-    // static final double     DRIVE_GEAR_REDUCTION    = 2.0;  // This is < 1.0 if geared UP
-    // static final double     WHEEL_DIAMETER_INCHES   = 4.0;  // For calculating circumference
-    // static final double     COUNTS_PER_INCH         = (COUNTS_PER_MOTOR_REV * DRIVE_GEAR_REDUCTION) / (WHEEL_DIAMETER_INCHES * 3.141);
-    // static final double     DRIVE_SPEED             = 0.6;
-    // static final double     TURN_SPEED              = 0.5;
-    // static final double     ARM_SPEED               = 0.3;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -103,31 +90,6 @@ public class CoachMark_BasicOpMode_Linear extends LinearOpMode {
         // Initialize drive train system variables
         // the init() method of the hardware class does all the work here
         robot.init(hardwareMap);
-
-        // Send telemetry message to signify robot waiting
-        telemetry.addData("Status", "Resetting Encoders");
-        telemetry.update();
-
-        robot.left_Drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        robot.right_Drive.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
-        robot.right_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.left_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        robot.left_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.right_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        robot.left_Drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.right_Drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        // Send telemetry message to indicate successful Encoder reset
-        // * telemetry.addData("Path0", "Starting at %7d :%7d", robot.left_Drive.getCurrentPosition(), robot.right_Drive.getCurrentPosition());
-        // * telemetry.update();
-
-        // * Most robots need the motor on one side to be reversed to drive forward
-        // * Reverse the motor that runs backwards when connected directly to the battery
-        // left_Drive.setDirection(DcMotor.Direction.FORWARD);
-        // right_Drive.setDirection(DcMotor.Direction.REVERSE);
 
         // get a reference to the color sensor
         colory = hardwareMap.get(ColorSensor.class, "colory");
@@ -152,7 +114,11 @@ public class CoachMark_BasicOpMode_Linear extends LinearOpMode {
             // Extend turn on LED Jewel Arm
             colory.enableLed(true);  // Turn on LED
             Sensor_arm.setPower(1.0);
-            sleep(5000);
+            sleep(10000);
+            Sensor_arm.setPower(0);
+            colory.enableLed(false);
+            Sensor_arm.setPower(-1.0);
+            sleep(9000);
             Sensor_arm.setPower(0);
 
             // convert the RGB values to HSV values
@@ -172,73 +138,5 @@ public class CoachMark_BasicOpMode_Linear extends LinearOpMode {
             telemetry.addData("Hue", hsvValues[0]);
 
         }
-    }
-    public void DriveForward (double power)
-    {
-        left_Drive.setPower(1);
-        right_Drive.setPower(1);
-    }
-    public void TurnLeft (double power)
-    {
-        left_Drive.setPower(-1);
-        right_Drive.setPower(1);
-    }
-    public void TurnRight (double power)
-    {
-        TurnLeft(-1);
-    }
-    public void StopDriving()
-    {
-        DriveForward(0);
-    }
-    public void DriveFowardDistance (double power, int distance)
-    {
-        //  Reset Encoders
-        left_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        right_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        // Set Target Position
-        left_Drive.setTargetPosition(1);
-        right_Drive.setTargetPosition(1);
-
-        // Set drive power
-        DriveForward(power);
-
-        while (left_Drive.isBusy() && right_Drive.isBusy())
-        {
-            // Wait unitll targe position is reached
-        }
-
-        // Stop and change modes back to normal
-        StopDriving();
-        left_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        right_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-    }
-    public void TurnLeftDistance (double power, int distance)
-    {
-        // Reset encoders
-        left_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        right_Drive.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        // Set target position
-        left_Drive.setTargetPosition(-1);
-        right_Drive.setTargetPosition(1);
-
-        // Set to RUN_TO_POSITION mode
-        left_Drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        right_Drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-        // Set drive power
-        TurnLeft(power);
-
-        while (left_Drive.isBusy() &&right_Drive.isBusy())
-        {
-            // Wait until target position is reached
-        }
-
-        // Stop and change modes back to normal
-        StopDriving();
-        left_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        right_Drive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 }
