@@ -38,7 +38,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 // import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Color Sensor Test", group="No Encoder")
+@Autonomous(name="Color Sensor Template", group="Templates")
 //@Disabled  //Comment this out to add to the opmode list
 public class AutonomousColorSensorTemplate extends LinearOpMode {
 
