@@ -83,11 +83,11 @@ public class CoachMark_BasicOpMode_Linear_NoEncoders extends LinearOpMode {
 
             // Extend turn on LED Jewel Arm
             Sensor_arm.setPower(1.0);
-            sleep(1500);
+            sleep(5000);
             Sensor_arm.setPower(0);
             sleep(5000);
             Sensor_arm.setPower(-1.0);
-            sleep(1500);
+            sleep(5000);
             Sensor_arm.setPower(0);
 
             // convert the RGB values to HSV values
