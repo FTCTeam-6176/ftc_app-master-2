@@ -37,9 +37,9 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-@Autonomous(name="Color Sensor By Wyatt for color ", group="Templates")
+@Autonomous(name="Color Sensor By Wyatt for color red left ", group="Templates")
 //@Disabled  //Comment this out to add to the opmode list
-public class AutonomousColorSensorByWyatt extends LinearOpMode {
+public class AutonomousColorSensorByWyattredleft extends LinearOpMode {
 
     // Declare OpMode members.
     // private ElapsedTime runtime = new ElapsedTime();
@@ -56,7 +56,7 @@ public class AutonomousColorSensorByWyatt extends LinearOpMode {
         DcMotor left_Drive = hardwareMap.get(DcMotor.class, "left_Drive");
         DcMotor right_Drive = hardwareMap.get(DcMotor.class, "right_Drive");
         CRServo Sensor_arm = hardwareMap.get(CRServo.class, "Sensor_arm");
-
+        DcMotor arm_Drive = hardwareMap.get(DcMotor.class, "arm_Drive");
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
         left_Drive.setDirection(DcMotor.Direction.FORWARD);
@@ -79,17 +79,13 @@ public class AutonomousColorSensorByWyatt extends LinearOpMode {
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
-        while (opModeIsActive()) {
+        while (opModeIsActive()&&runtime.seconds() <= 9.5)
+        {
 
             // Extend turn on LED Jewel Arm
             Sensor_arm.setPower(1.0);
-            sleep(5000);
+            sleep(6000);
             Sensor_arm.setPower(0);
-            sleep(5000);
-            Sensor_arm.setPower(-1.0);
-            sleep(5000);
-            Sensor_arm.setPower(0);
-
             // convert the RGB values to HSV values
             // multiply by the SCALE_FACTOR
             // then cast it back to int (SCALE_FACTOR is a double)
@@ -114,6 +110,10 @@ public class AutonomousColorSensorByWyatt extends LinearOpMode {
                 sleep(1000);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
+                sleep(500);
+                Sensor_arm.setPower(-1.0);
+                sleep(6000);
+                Sensor_arm.setPower(0);
             }
             else
             {
@@ -123,6 +123,10 @@ public class AutonomousColorSensorByWyatt extends LinearOpMode {
                 sleep(1000);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
+                sleep(500);
+                Sensor_arm.setPower(-1.0);
+                sleep(6000);
+                Sensor_arm.setPower(0);
             }
         }
     }
