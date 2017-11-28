@@ -37,7 +37,7 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+//This is the most complete program of all of the AutonomousColorSensorByWyatt programs.
 @Autonomous(name="Color Sensor By Wyatt for color blue left ", group="Templates")
 //@Disabled  //Comment this out to add to the opmode list
 public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
@@ -136,6 +136,12 @@ public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
+                left_Drive.setPower(-.5);
+                right_Drive.setPower(.5);
+                sleep(1000);
+                left_Drive.setPower(1);
+                right_Drive.setPower(1);
+                sleep(500);
             }
         }
     }
