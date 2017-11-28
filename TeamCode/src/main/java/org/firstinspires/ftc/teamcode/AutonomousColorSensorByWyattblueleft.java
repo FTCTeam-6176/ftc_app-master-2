@@ -117,6 +117,12 @@ public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
+                left_Drive.setPower(.25);
+                right_Drive.setPower(-.25);
+                sleep(1000);
+                left_Drive.setPower(1);
+                right_Drive.setPower(1);
+                sleep(500);
             }
             else
             {
