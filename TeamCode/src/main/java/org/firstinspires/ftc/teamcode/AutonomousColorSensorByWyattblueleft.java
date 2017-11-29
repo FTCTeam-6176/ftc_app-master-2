@@ -111,7 +111,7 @@ public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
                 sleep(5000);
                 left_Drive.setPower(.25);
                 right_Drive.setPower(-.25);
-                sleep(1000);
+                sleep(500);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
                 sleep(500);
@@ -130,15 +130,15 @@ public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
                 sleep(5000);
                 left_Drive.setPower(-.25);
                 right_Drive.setPower(.25);
-                sleep(1000);
+                sleep(500);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
                 sleep(500);
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
-                left_Drive.setPower(-.5);
-                right_Drive.setPower(.5);
+                left_Drive.setPower(1);
+                right_Drive.setPower(-1);
                 sleep(1000);
                 left_Drive.setPower(1);
                 right_Drive.setPower(1);
