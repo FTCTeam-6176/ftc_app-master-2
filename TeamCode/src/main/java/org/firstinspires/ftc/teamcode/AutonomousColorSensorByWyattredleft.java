@@ -79,7 +79,7 @@ public class AutonomousColorSensorByWyattredleft extends LinearOpMode {
         waitForStart();
 
         // run until the end of the match (driver presses STOP)
-        while (opModeIsActive()&&runtime.seconds() <= 9.5)
+        while (opModeIsActive()&&runtime.seconds() <= 6.5)
         {
 
             // Extend turn on LED Jewel Arm
