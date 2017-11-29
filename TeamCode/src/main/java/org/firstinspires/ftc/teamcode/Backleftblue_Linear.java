@@ -90,11 +90,10 @@ public class Backleftblue_Linear extends LinearOpMode {
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
 
-        encoderDrive(0.5,   2, 2, 4.0);
-        encoderDrive(0.5, -12, 12, 5.0);
-        encoderDrive(0.5, 37, 37, 9.0);
-        arm(1.0, 3000);
-        encoderDrive(0.5, -1.5, -1.5, 3.0);
+        encoderDrive(0.5, 2, -2, 5.0);
+        encoderDrive(0.5, -37, -37, 9.0);
+        arm(-1.0, 3000);
+        encoderDrive(0.5, 1.5, 1.5, 3.0);
 
 
 

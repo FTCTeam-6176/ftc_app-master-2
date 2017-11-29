@@ -92,10 +92,10 @@ public class Backrightblue_Linear extends LinearOpMode {
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
 
         encoderDrive(0.5,   -37, -37, 9.0);
-        encoderDrive(0.5, -8.5, 8.5, 4.0);
-        encoderDrive(0.5, -4, -4, 4.0);
-        arm(1.0, 5000);
-        //encoderDrive(0.5, 1.5, 1.5, 3.0);
+        encoderDrive(0.5, -9, 9, 4.0);
+        encoderDrive(0.5, -5, -5, 4.0);
+        arm(-1.0, 4000);
+        encoderDrive(0.5, 2.5, 2.5, 3.0);
 
 
 
@@ -166,7 +166,8 @@ public class Backrightblue_Linear extends LinearOpMode {
             //  sleep(250);   // optional pause after each move
         }
     }
-        public void arm (double speed,long time){
+        public void arm (double speed, long time){
+
             Pin.setPower(speed);
             sleep(time);
             Pin.setPower(0.0);
