@@ -61,7 +61,7 @@ import java.util.Locale;
  */
 @Autonomous(name = "Sensor: Sensor Test", group = "Sensor")
 //@Disabled                            // Comment this out to add to the opmode list
-public class SensorREVColorDistance extends LinearOpMode {
+public class SensorREVColorDistance_Test01 extends LinearOpMode {
 
     /**
      * Note that the REV Robotics Color-Distance incorporates two sensors into one device.

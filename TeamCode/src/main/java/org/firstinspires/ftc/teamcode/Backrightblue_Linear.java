@@ -92,10 +92,10 @@ public class Backrightblue_Linear extends LinearOpMode {
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
 
         encoderDrive(0.5,   -37, -37, 9.0);
-        encoderDrive(0.5, -8, 8, 4.0);
-        encoderDrive(0.5, -10, -10, 7.0);
+        encoderDrive(0.5, -8.5, 8.5, 4.0);
+        encoderDrive(0.5, -4, -4, 4.0);
         arm(1.0, 5000);
-        encoderDrive(0.5, 1.5, 1.5, 3.0);
+        //encoderDrive(0.5, 1.5, 1.5, 3.0);
 
 
 

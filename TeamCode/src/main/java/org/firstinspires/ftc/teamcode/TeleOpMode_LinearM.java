@@ -33,10 +33,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
-//import com.qualcomm.robotcore.hardware.ColorSensor;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 //import com.qualcomm.robotcore.hardware.DcMotorSimple;
-//import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 //import com.qualcomm.robotcore.util.Range;
 
@@ -64,8 +64,8 @@ public class TeleOpMode_LinearM extends LinearOpMode {
     private DcMotor rightDrive = null;
     private CRServo servo1 = null;
     private DcMotor armDrive = null;
-    //private Servo servoarm = null;
-    //private ColorSensor colorSensor = null;
+    private CRServo servoarm = null;
+    private ColorSensor colorSensor = null;
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -74,12 +74,12 @@ public class TeleOpMode_LinearM extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
-        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-        servo1 = hardwareMap.get(CRServo.class, "servo_1");
-        armDrive = hardwareMap.get(DcMotor.class, "arm_drive");
-        //servoarm = hardwareMap.get(Servo.class, "servo_arm");
-        //colorSensor = hardwareMap.get(ColorSensor.class, "color_sensor");
+        leftDrive  = hardwareMap.get(DcMotor.class, "left_Drive");
+        rightDrive = hardwareMap.get(DcMotor.class, "right_Drive");
+        servo1 = hardwareMap.get(CRServo.class, "Pin");
+        armDrive = hardwareMap.get(DcMotor.class, "arm_Drive");
+        servoarm = hardwareMap.get(CRServo.class, "Sensor_arm");
+        colorSensor = hardwareMap.get(ColorSensor.class, "colory");
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
         leftDrive.setDirection(DcMotor.Direction.REVERSE);
@@ -117,7 +117,13 @@ public class TeleOpMode_LinearM extends LinearOpMode {
                 rightPower2 = gamepad1.left_stick_y;
                 servo1Power = gamepad2.right_stick_y;
                 arm_drive = gamepad2.left_stick_y;
-
+            if (gamepad1.left_bumper){
+                servoarm.setPower(0.75);
+            }
+            else if (gamepad1.right_bumper){
+                servoarm.setPower(-0.75);
+            }
+            servoarm.setPower(0.0);
             //arm_drive = arm_drive2/1.25;
             leftPower = leftPower2/1.25;
             rightPower = rightPower2/1.25;

@@ -42,7 +42,7 @@ import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@Autonomous(name="Pushbot:color sensor jewel knock off2", group="Pushbot")
+@Autonomous(name="Pushbot:color sensor jewel knock off4", group="Pushbot")
 //@Disabled
 public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
 
@@ -102,29 +102,25 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
 
             Sensorarm.setPower(1);
             Sensorarm.setPower(1);
-        encoderDrive(DRIVE_SPEED, 0, 0, 5.0);
-
         //sleep(1000); this should work as a wait block
 
 
         if (colory.red() > colory.blue()) {
             sleep(10000);
-            encoderDrive(TURN_SPEED, 4, -4, 5.0);
-            Sensorarm.setPower(-2.5);
-            Sensorarm.setPower(-2.5);
+            encoderDrive(TURN_SPEED, 4, 4, 5.0);
+            Sensorarm.setPower(-1);
+            Sensorarm.setPower(-1);
             colory.enableLed(false);
 
 
         }
         else
         {
-            /*sleep(10000);
-            encoderDrive(DRIVE_SPEED, 4, -4, 5.0);
-            Sensorarm.setPower(-2.5);
-            Sensorarm.setPower(-2.5);
-            colory.enableLed(false);*/
-
-            encoderDrive(TURN_SPEED, -4, -4, 5.0);
+            sleep(10000);
+            encoderDrive(DRIVE_SPEED, -4, -4, 5.0);
+            Sensorarm.setPower(-1);
+            Sensorarm.setPower(-1);
+            colory.enableLed(false);
         }
         /*
         encoderDrive(TURN_SPEED, 10,10, 4.0);
@@ -163,6 +159,8 @@ public class PushbotAutoDriveByEncoder_Linear extends LinearOpMode {
             newRightTarget = robot.right_Drive.getCurrentPosition() + (int)(rightInches * COUNTS_PER_INCH);
             robot.left_Drive.setTargetPosition(newLeftTarget);
             robot.right_Drive.setTargetPosition(newRightTarget);
+
+            //
 
             // Turn On RUN_TO_POSITION
             robot.left_Drive.setMode(DcMotor.RunMode.RUN_TO_POSITION);
