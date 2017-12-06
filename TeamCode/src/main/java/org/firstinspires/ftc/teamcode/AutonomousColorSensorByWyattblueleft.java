@@ -59,7 +59,7 @@ public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
         CRServo Sensor_arm = hardwareMap.get(CRServo.class, "Sensor_arm");
         DcMotor arm_Drive = hardwareMap.get(DcMotor.class, "arm_Drive");
         ColorSensor colory = hardwareMap.get(ColorSensor.class, "colory");
-         CRServo Pin = hardwareMap.get(CRServo.class, "colory");
+         CRServo Pin = hardwareMap.get(CRServo.class, "Pin");
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
         left_Drive.setDirection(DcMotor.Direction.FORWARD);
