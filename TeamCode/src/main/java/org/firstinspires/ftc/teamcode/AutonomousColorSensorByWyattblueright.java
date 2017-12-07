@@ -56,10 +56,10 @@ public class AutonomousColorSensorByWyattblueright extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         DcMotor left_Drive = hardwareMap.get(DcMotor.class, "left_Drive");
         DcMotor right_Drive = hardwareMap.get(DcMotor.class, "right_Drive");
-        CRServo Sensor_arm = hardwareMap.get(CRServo.class, "Sensor_arm");
+        CRServo Sensor_arm = hardwareMap.get(CRServo.class, "Pin");
         DcMotor arm_Drive = hardwareMap.get(DcMotor.class, "arm_Drive");
         ColorSensor colory = hardwareMap.get(ColorSensor.class, "colory");
-        CRServo Pin = hardwareMap.get(CRServo.class, "Pin");
+        CRServo Pin = hardwareMap.get(CRServo.class, "Sensor_arm ");
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
         left_Drive.setDirection(DcMotor.Direction.FORWARD);
@@ -102,6 +102,11 @@ public class AutonomousColorSensorByWyattblueright extends LinearOpMode {
             telemetry.addData("blue", colory.blue());
             telemetry.addData("Hue", hsvValues[0]);
             telemetry.update();
+            telemetry.update();
+            telemetry.addData("Jack Philipps is an idiot","");
+            telemetry.update();
+            telemetry.addData("It's a beautiful day outside birds are singing flowers are blooming","");
+            telemetry.addData("On days like these kids like you...","");
 
             if (colory.red() > colory.blue())
             {
@@ -134,6 +139,12 @@ public class AutonomousColorSensorByWyattblueright extends LinearOpMode {
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
+                left_Drive.setPower(-.25);
+                right_Drive.setPower(.25);
+                sleep(1000);
+                left_Drive.setPower(1);
+                right_Drive.setPower(1);
+                sleep(500);
             }
         }
     }
