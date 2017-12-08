@@ -56,10 +56,10 @@ public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         DcMotor left_Drive = hardwareMap.get(DcMotor.class, "left_Drive");
         DcMotor right_Drive = hardwareMap.get(DcMotor.class, "right_Drive");
-        CRServo Sensor_arm = hardwareMap.get(CRServo.class, "Pin");
+        CRServo Pin = hardwareMap.get(CRServo.class, "Pin");
         DcMotor arm_Drive = hardwareMap.get(DcMotor.class, "arm_Drive");
         ColorSensor colory = hardwareMap.get(ColorSensor.class, "colory");
-         CRServo Pin = hardwareMap.get(CRServo.class, "Sensor_arm");
+         CRServo Sensor_arm = hardwareMap.get(CRServo.class, "Sensor_arm");
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
         left_Drive.setDirection(DcMotor.Direction.FORWARD);
@@ -111,19 +111,17 @@ public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
                 sleep(5000);
                 left_Drive.setPower(.25);
                 right_Drive.setPower(-.25);
-                sleep(500);
+                sleep(600);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
                 sleep(500);
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
-                left_Drive.setPower(.25);
-                right_Drive.setPower(-.25);
-                sleep(1000);
-                left_Drive.setPower(1);
-                right_Drive.setPower(1);
                 sleep(500);
+                left_Drive.setPower(-1);
+                right_Drive.setPower(-1);
+                sleep(750);
             }
             else
             {
@@ -137,8 +135,6 @@ public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
-                left_Drive.setPower(.5);
-                right_Drive.setPower(-.5);
                 sleep(1000);
                 left_Drive.setPower(1);
                 right_Drive.setPower(1);

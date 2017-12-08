@@ -114,8 +114,8 @@ public class TeleOpMode_LinearM extends LinearOpMode {
 */
 
 
-                leftPower2 = gamepad1.right_stick_y;
-                rightPower2 = gamepad1.left_stick_y;
+                leftPower2 = gamepad1.left_stick_y;
+                rightPower2 = gamepad1.right_stick_y;
                 servo1Power = gamepad2.right_stick_y;
                 arm_drive = gamepad2.left_stick_y;
             if (gamepad1.left_bumper){
@@ -154,9 +154,7 @@ public class TeleOpMode_LinearM extends LinearOpMode {
             telemetry.addData("Motor arms", "left (%.2f), right (%.2f)", armDrive);
             telemetry.update();
             */
-           telemetry.addData("Wyatt is GOD", "this is a joke lorem ipsum");
-
             idle();
-        }telemetry.addData("All hail Wyatt","");
+        }
     }
 }
