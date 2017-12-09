@@ -89,7 +89,7 @@ public class AutonomousColorSensorByWyattredright extends LinearOpMode {
             sleep(550);
             arm_Drive.setPower(0);
             Sensor_arm.setPower(1.0);
-            sleep(6000);
+            sleep(6700);
             Sensor_arm.setPower(0);
             // convert the RGB values to HSV values
             // multiply by the SCALE_FACTOR
