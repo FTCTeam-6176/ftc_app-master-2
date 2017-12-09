@@ -85,6 +85,8 @@ public class AutonomousColorSensorByWyattredright extends LinearOpMode {
         {
 
             // Extend turn on LED Jewel Arm
+            arm_Drive.setPower(1);
+            sleep(1000);
             Sensor_arm.setPower(1.0);
             sleep(6000);
             Sensor_arm.setPower(0);
