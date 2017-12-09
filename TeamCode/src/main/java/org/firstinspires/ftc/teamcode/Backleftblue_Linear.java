@@ -90,6 +90,7 @@ public class Backleftblue_Linear extends LinearOpMode {
         // Step through each leg of the path,
         // Note: Reverse movement is obtained by setting a negative distance (not speed)
         //DON'T MESS AROUND WITH THE BACK UP BLUE AUTONOMOUS
+        Arm_Drive(-1, 2000);
         encoderDrive(0.5, 2, -2, 5.0);
         encoderDrive(0.5, -37, -37, 9.0);
         arm(-1.0, 3000);
@@ -169,6 +170,11 @@ public class Backleftblue_Linear extends LinearOpMode {
             sleep(time);
             Pin.setPower(0.0);
         }
+    public void Arm_Drive (double speed,long time){
+        arm_Drive.setPower(speed);
+        sleep(time);
+        arm_Drive.setPower(0.0);
+    }
     }
 
 
