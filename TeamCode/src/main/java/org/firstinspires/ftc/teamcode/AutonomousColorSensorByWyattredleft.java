@@ -129,6 +129,8 @@ public class AutonomousColorSensorByWyattredleft extends LinearOpMode {
                 right_Drive.setPower(-1);
                 sleep(1000);
                 right_Drive.setPower(1);
+                sleep(750);
+
             }
             else
             {
