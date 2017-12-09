@@ -30,7 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import android.graphics.Color;
-
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -39,7 +39,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 //This is the most complete program of all of the AutonomousColorSensorByWyatt programs.
 @Autonomous(name="Color Sensor By Wyatt for color blue left ", group="Templates")
-//@Disabled  //Comment this out to add to the opmode list
+@Disabled  //Comment this out to add to the opmode list
 public class AutonomousColorSensorByWyattblueleft extends LinearOpMode {
 
     // Declare OpMode members.

@@ -30,6 +30,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import android.graphics.Color;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -38,7 +39,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 @Autonomous(name="Color Sensor By Wyatt for color red left ", group="Templates")
-//@Disabled  //Comment this out to add to the opmode list
+@Disabled  //Comment this out to add to the opmode list
 public class AutonomousColorSensorByWyattredleft extends LinearOpMode {
 
     // Declare OpMode members.

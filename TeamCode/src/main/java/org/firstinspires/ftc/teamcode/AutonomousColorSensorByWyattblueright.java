@@ -38,7 +38,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Color Sensor By Wyatt for color blue right ", group="Templates")
+@Autonomous(name="Color Sensor By Wyatt for color blue", group="Templates")
 //@Disabled  //Comment this out to add to the opmode list
 public class AutonomousColorSensorByWyattblueright extends LinearOpMode {
 
@@ -84,8 +84,8 @@ public class AutonomousColorSensorByWyattblueright extends LinearOpMode {
         {
 
             // Extend turn on LED Jewel Arm
-            arm_Drive.setPower(1);
-            sleep(200);
+            arm_Drive.setPower(.4);
+            sleep(550);
             arm_Drive.setPower(0);
             Sensor_arm.setPower(1.0);
             sleep(6000);
@@ -119,11 +119,11 @@ public class AutonomousColorSensorByWyattblueright extends LinearOpMode {
                 sleep(1000);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
-               /* sleep(500);
+                sleep(500);
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
-                left_Drive.setPower(.25);
+                /*left_Drive.setPower(.25);
                 right_Drive.setPower(-.25);
                 sleep(1000);
                 left_Drive.setPower(1);
@@ -133,16 +133,16 @@ public class AutonomousColorSensorByWyattblueright extends LinearOpMode {
             else
             {
                 sleep(5000);
-                left_Drive.setPower(-.5);
-                right_Drive.setPower(.5);
+                left_Drive.setPower(-.25);
+                right_Drive.setPower(.25);
                 sleep(650);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
-                /*sleep(500);
+                sleep(500);
                 Sensor_arm.setPower(-1.0);
                 sleep(6200);
                 Sensor_arm.setPower(0);
-                left_Drive.setPower(0);
+               /* left_Drive.setPower(0);
                 right_Drive.setPower(0);
                 sleep(2000);
                 left_Drive.setPower(.25);

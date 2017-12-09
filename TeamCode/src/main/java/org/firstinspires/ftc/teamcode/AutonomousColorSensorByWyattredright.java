@@ -38,7 +38,7 @@ import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@Autonomous(name="Color Sensor By Wyatt for color red right ", group="Templates")
+@Autonomous(name="Color Sensor By Wyatt for color red", group="Templates")
 //@Disabled  //Comment this out to add to the opmode list
 public class AutonomousColorSensorByWyattredright extends LinearOpMode {
 
@@ -85,8 +85,8 @@ public class AutonomousColorSensorByWyattredright extends LinearOpMode {
         {
 
             // Extend turn on LED Jewel Arm
-            arm_Drive.setPower(1);
-            sleep(200);
+            arm_Drive.setPower(.5);
+            sleep(550);
             arm_Drive.setPower(0);
             Sensor_arm.setPower(1.0);
             sleep(6000);
@@ -117,14 +117,14 @@ public class AutonomousColorSensorByWyattredright extends LinearOpMode {
                 right_Drive.setPower(0);
                 sleep(500);
                 Sensor_arm.setPower(-1.0);
-                sleep(6000);
+               sleep(6000);
                 Sensor_arm.setPower(0);
-                left_Drive.setPower(-.25);
+               /*  left_Drive.setPower(-.25);
                 right_Drive.setPower(.25);
                 sleep(1000);
                 left_Drive.setPower(-1);
                 right_Drive.setPower(-1);
-                sleep(3000);
+                sleep(3000);*/
             }
             else
             {
@@ -138,12 +138,12 @@ public class AutonomousColorSensorByWyattredright extends LinearOpMode {
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
-                left_Drive.setPower(-.5);
+                /*left_Drive.setPower(-.5);
                 right_Drive.setPower(.5);
                 sleep(1000);
                 left_Drive.setPower(-1);
                 right_Drive.setPower(-1);
-                sleep(3000);
+                sleep(3000);*/
             }
         }
     }
