@@ -85,7 +85,8 @@ public class AutonomousColorSensorByWyattredleft extends LinearOpMode {
 
             // Extend turn on LED Jewel Arm
             arm_Drive.setPower(1);
-            sleep(750);
+            sleep(200);
+            arm_Drive.setPower(0);
             Sensor_arm.setPower(1.0);
             sleep(6000);
             Sensor_arm.setPower(0);
@@ -115,7 +116,7 @@ public class AutonomousColorSensorByWyattredleft extends LinearOpMode {
                 sleep(500);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
-                sleep(500);
+               /* sleep(500);
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
@@ -129,7 +130,7 @@ public class AutonomousColorSensorByWyattredleft extends LinearOpMode {
                 right_Drive.setPower(-1);
                 sleep(1000);
                 right_Drive.setPower(1);
-                sleep(750);
+                sleep(750);*/
 
             }
             else
@@ -140,14 +141,14 @@ public class AutonomousColorSensorByWyattredleft extends LinearOpMode {
                 sleep(500);
                 left_Drive.setPower(0);
                 right_Drive.setPower(0);
-                sleep(500);
+               /* sleep(500);
                 Sensor_arm.setPower(-1.0);
                 sleep(6000);
                 Sensor_arm.setPower(0);
                 sleep(1000);
                 left_Drive.setPower(1);
                 right_Drive.setPower(1);
-                sleep(750);
+                sleep(750);*/
             }
         }
     }
