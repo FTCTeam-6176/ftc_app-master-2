@@ -53,7 +53,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
 
-@TeleOp(name="TeleOpMode Use during the tournament", group="Linear Opmode")
+@TeleOp(name="TeleOpModeTest", group="Linear Opmode")
 //@Disabled
 public class TeleOpMode_LinearTest extends LinearOpMode {
 
