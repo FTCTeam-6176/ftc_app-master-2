@@ -55,14 +55,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name="TeleOpMode Use during the tournament", group="Linear Opmode")
 //@Disabled
-public class SummerTeleOpMode_LinearM extends LinearOpMode {
+public class TeleOpMode_LinearTest extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
-    private DcMotor leftDrive = null;
-    private DcMotor rightDrive = null;
-    private DcMotor shooterDrive = null;
-    private ColorSensor colorSensor = null;
+    private DcMotor Drive = null;
+    private CRServo servo1 = null;
+
     @Override
     public void runOpMode() {
         telemetry.addData("Status", "Initialized");
@@ -71,13 +70,13 @@ public class SummerTeleOpMode_LinearM extends LinearOpMode {
         // Initialize the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
-        leftDrive  = hardwareMap.get(DcMotor.class, "left_Drive");
-        rightDrive = hardwareMap.get(DcMotor.class, "right_Drive");
-        colorSensor = hardwareMap.get(ColorSensor.class, "colory");
+        Drive = hardwareMap.get(DcMotor.class, "drive");
+        servo1 = hardwareMap.get(CRServo.class, "servo");
+
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
-        leftDrive.setDirection(DcMotor.Direction.FORWARD);
-        rightDrive.setDirection(DcMotor.Direction.REVERSE);
+        Drive.setDirection(DcMotor.Direction.FORWARD);
+        servo1.setDirection(DcMotor.Direction.FORWARD);
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         runtime.reset();
@@ -86,10 +85,9 @@ public class SummerTeleOpMode_LinearM extends LinearOpMode {
         while (opModeIsActive()) {
 
             // Setup a variable for each drive wheel to save power level for telemetry
+            double Power = 0;
+            double servoarm1 = 0;
 
-            double leftPower = 0;
-            double rightPower = 0;
-            double shooterPower = 0;
             // Choose to drive using either Tank Mode, or POV Mode
             // Comment out the method that's not used.  The default below is POV.
 
@@ -102,20 +100,17 @@ public class SummerTeleOpMode_LinearM extends LinearOpMode {
 */
 
 
-                leftPower = gamepad1.left_stick_y;
-                rightPower = gamepad1.right_stick_y;
-                if (gamepad1.left_bumper= true){
-                    shooterPower = 1.0;
-                }
-                else{
-                    shooterPower = 0.0;
-                }
+               Drive.setPower(gamepad1.left_stick_y);
+                servo1.setPower(gamepad1.right_stick_y);
 
+
+            //arm_drive = arm_drive2/1.25;
+
+            //servo1Power = servo1Power2/1;
 
             // Send calculated power to wheels
-            leftDrive.setPower(leftPower);
-            rightDrive.setPower(rightPower);
-            shooterDrive.setPower(shooterPower);
+
+
 
   /* if (gamepad1.a)  {
                 servoarm1 = servoarm1 + 0.1;
